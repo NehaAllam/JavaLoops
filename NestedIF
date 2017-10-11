@@ -21,7 +21,10 @@ public class NestedIF
       double fee = 0.0;
       double taxfee = 0.0;
       double finalfee =0.0;
+      boolean valid=true;
       
+      do
+      {
       try
       {
          age = Integer.parseInt(JOptionPane.showInputDialog(null,"Enter your age!"));
@@ -38,6 +41,7 @@ public class NestedIF
       else if(age>0 && age<6)
       {
          JOptionPane.showMessageDialog(null,"Your ticket is free! Enjoy!");
+         valid=false;
       }
       else if(age>6 && age <18)
       {
@@ -54,12 +58,14 @@ public class NestedIF
             fee = childfee + convfee;
             taxfee = fee * tax;
             finalfee = fee + taxfee;
+            valid=false;
          }
          else if(day==2 | day==3 | day==4 | day==5 | day==6)
          {
             fee = childfee + convfee;
             taxfee = fee * tax;
             finalfee = (fee+taxfee) * discount;
+            valid=false;
          }
          else
          {
@@ -81,12 +87,14 @@ public class NestedIF
             fee = adultfee + convfee;
             taxfee = fee * tax;
             finalfee = fee + taxfee;
+            valid=false;
          }
          else if(day==2 | day==3 | day==4 | day==5 | day==6)
          {
             fee = adultfee + convfee;
             taxfee = fee * tax;
             finalfee = (fee+taxfee) * discount;
+            valid=false;
          }
          else
          {
@@ -97,13 +105,13 @@ public class NestedIF
       {
          JOptionPane.showMessageDialog(null,"Please enter a valid age");
       }
+      }while(valid=false);
       
-      String output = "****FINAL RECEIPT***** \n The age entered is:" + age + "\n The cost before tax and discount is: $%.2f " + fee + "\n The total cost is: $%.2f" + finalfee + "\n Have a good day!";
+      String output = "****FINAL RECEIPT***** \n The age entered is:" + age + "\n The cost before tax and discount is: " + fee + "\n The total cost is:" + finalfee + "\n Have a good day!";
       JOptionPane.showMessageDialog(null,output);
       
     }
- }
-         
+ }         
 
                
      
